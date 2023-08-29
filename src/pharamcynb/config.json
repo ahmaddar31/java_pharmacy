@@ -1,0 +1,7 @@
+{
+    "credentials":{
+        "url":"jdbc:mysql://localhost:3306/pharmacy",
+        "username": "root",
+        "password": ""
+    }
+}
