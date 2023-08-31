@@ -22,6 +22,11 @@
         <Property name="text" type="java.lang.String" value="jMenuItem1"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton1"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -60,54 +65,69 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="icon_sell" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbl_sell" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="icon_add" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="icon_update" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="lbl_sell1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lbl_sell2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="lbl_dashboard_head" min="-2" pref="210" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="icon_delete" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_sell4" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="75" max="32767" attributes="0"/>
-                          <Component id="icon_view" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="lbl_sell" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="96" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="lbl_sell3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_sell4" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="iconDelete" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="iconSell" min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="iconAddMed" min="-2" pref="93" max="-2" attributes="0"/>
+                              <Component id="lbl_sell1" min="-2" max="-2" attributes="0"/>
+                              <Component id="iconView" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="iconUpdate" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="lbl_sell2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblReservation" min="-2" max="-2" attributes="0"/>
+                                              <Component id="iconReservation" min="-2" pref="94" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lbl_dashboard_head" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                                  <Component id="btn_exit_home" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="lbl_sell3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -119,13 +139,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbl_dashboard_head" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="btn_exit_home" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="icon_update" pref="0" max="32767" attributes="0"/>
-                      <Component id="icon_sell" min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="icon_add" pref="0" max="32767" attributes="0"/>
+                      <Component id="iconUpdate" max="32767" attributes="0"/>
+                      <Component id="iconSell" max="32767" attributes="0"/>
+                      <Component id="iconAddMed" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -135,15 +155,17 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="icon_view" pref="0" max="32767" attributes="0"/>
-                      <Component id="icon_delete" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="iconView" max="32767" attributes="0"/>
+                      <Component id="iconDelete" max="32767" attributes="0"/>
+                      <Component id="iconReservation" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lbl_sell4" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="lbl_sell3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="lblReservation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,7 +179,46 @@
             <Property name="text" type="java.lang.String" value="Dashboard"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="icon_sell">
+        <Component class="javax.swing.JLabel" name="lbl_sell">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sell "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_sell1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Add medication"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_sell2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Update medication information"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_sell3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="View all informations"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_sell4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Delete medication"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_exit_home">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Exit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_exit_homeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="iconSell">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/sell-icon.jpeg"/>
@@ -171,13 +232,11 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconSellActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_sell">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sell "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="icon_add">
+        <Component class="javax.swing.JButton" name="iconAddMed">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/add_med.jpeg"/>
@@ -191,13 +250,11 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconAddMedActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_sell1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Add medication"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="icon_update">
+        <Component class="javax.swing.JButton" name="iconUpdate">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/update_icon.jpeg"/>
@@ -211,13 +268,11 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconUpdateActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_sell2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Update medication information"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="icon_delete">
+        <Component class="javax.swing.JButton" name="iconDelete">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/delete_med_icon.jpeg"/>
@@ -231,13 +286,11 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconDeleteActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_sell3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="View all informations"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="icon_view">
+        <Component class="javax.swing.JButton" name="iconView">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/view_info.jpeg"/>
@@ -251,21 +304,31 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconViewActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbl_sell4">
+        <Component class="javax.swing.JButton" name="iconReservation">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Delete medication"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/view_reservation.jpeg"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iconReservationActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JLabel" name="lblReservation">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Exit"/>
+            <Property name="text" type="java.lang.String" value="View Reservations"/>
           </Properties>
         </Component>
       </SubComponents>

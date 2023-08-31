@@ -5,6 +5,9 @@
  */
 package pharamcynb;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -29,19 +32,22 @@ public class Home extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lbl_dashboard_head = new javax.swing.JLabel();
-        icon_sell = new javax.swing.JLabel();
         lbl_sell = new javax.swing.JLabel();
-        icon_add = new javax.swing.JLabel();
         lbl_sell1 = new javax.swing.JLabel();
-        icon_update = new javax.swing.JLabel();
         lbl_sell2 = new javax.swing.JLabel();
-        icon_delete = new javax.swing.JLabel();
         lbl_sell3 = new javax.swing.JLabel();
-        icon_view = new javax.swing.JLabel();
         lbl_sell4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_exit_home = new javax.swing.JButton();
+        iconSell = new javax.swing.JButton();
+        iconAddMed = new javax.swing.JButton();
+        iconUpdate = new javax.swing.JButton();
+        iconDelete = new javax.swing.JButton();
+        iconView = new javax.swing.JButton();
+        iconReservation = new javax.swing.JButton();
+        lblReservation = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -56,88 +62,138 @@ public class Home extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_dashboard_head.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lbl_dashboard_head.setText("Dashboard");
 
-        icon_sell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sell-icon.jpeg"))); // NOI18N
-        icon_sell.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        icon_sell.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         lbl_sell.setText("Sell ");
-
-        icon_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_med.jpeg"))); // NOI18N
-        icon_add.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        icon_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lbl_sell1.setText("Add medication");
 
-        icon_update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update_icon.jpeg"))); // NOI18N
-        icon_update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        icon_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         lbl_sell2.setText("Update medication information");
-
-        icon_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_med_icon.jpeg"))); // NOI18N
-        icon_delete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        icon_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lbl_sell3.setText("View all informations");
 
-        icon_view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_info.jpeg"))); // NOI18N
-        icon_view.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        icon_view.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         lbl_sell4.setText("Delete medication");
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Exit");
+        btn_exit_home.setBackground(new java.awt.Color(255, 0, 0));
+        btn_exit_home.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exit_home.setText("Exit");
+        btn_exit_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_homeActionPerformed(evt);
+            }
+        });
+
+        iconSell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sell-icon.jpeg"))); // NOI18N
+        iconSell.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconSell.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconSell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconSellActionPerformed(evt);
+            }
+        });
+
+        iconAddMed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_med.jpeg"))); // NOI18N
+        iconAddMed.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconAddMed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconAddMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconAddMedActionPerformed(evt);
+            }
+        });
+
+        iconUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update_icon.jpeg"))); // NOI18N
+        iconUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconUpdateActionPerformed(evt);
+            }
+        });
+
+        iconDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_med_icon.jpeg"))); // NOI18N
+        iconDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconDeleteActionPerformed(evt);
+            }
+        });
+
+        iconView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_info.jpeg"))); // NOI18N
+        iconView.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconViewActionPerformed(evt);
+            }
+        });
+
+        iconReservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_reservation.jpeg"))); // NOI18N
+        iconReservation.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        iconReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        iconReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iconReservationActionPerformed(evt);
+            }
+        });
+
+        lblReservation.setText("View Reservations");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(icon_sell)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
                         .addComponent(lbl_sell)
-                        .addGap(34, 34, 34)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(icon_add)
-                        .addGap(93, 93, 93)
-                        .addComponent(icon_update)
-                        .addGap(90, 90, 90))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_sell4)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(iconDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(iconSell, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(55, 55, 55)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl_sell1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_sell2)
-                        .addGap(32, 32, 32))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbl_dashboard_head, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119)
-                .addComponent(jButton1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(icon_delete)
-                    .addComponent(lbl_sell4))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(iconAddMed, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_sell1)
+                            .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(iconUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(lbl_sell2))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblReservation)
+                                            .addComponent(iconReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(32, 32, 32))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(icon_view)
-                        .addGap(182, 182, 182))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(lbl_sell3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_dashboard_head, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(119, 119, 119)
+                                .addComponent(btn_exit_home))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(lbl_sell3)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,12 +201,12 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_dashboard_head, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_exit_home, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(icon_update, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(icon_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(icon_add, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(iconUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconSell, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconAddMed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,13 +214,15 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(lbl_sell2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(icon_view, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(icon_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iconView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconReservation))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_sell4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_sell3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(lbl_sell3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReservation))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,6 +238,80 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_exit_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_homeActionPerformed
+        btn_exit_home.setBackground(Color.red);
+        btn_exit_home.setOpaque(true);
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to Exit Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btn_exit_homeActionPerformed
+
+    private void iconSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconSellActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new sell().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new adminLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_iconSellActionPerformed
+
+    private void iconAddMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconAddMedActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new addNewMed().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new adminLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_iconAddMedActionPerformed
+
+    private void iconUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconUpdateActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new updateMed().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new adminLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_iconUpdateActionPerformed
+
+    private void iconDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconDeleteActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new DelMed().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new adminLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_iconDeleteActionPerformed
+
+    private void iconViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconViewActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new viewMed().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new adminLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_iconViewActionPerformed
+
+    private void iconReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconReservationActionPerformed
+        setVisible(false);
+        new viewReservation().setVisible(true);
+    }//GEN-LAST:event_iconReservationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,15 +349,18 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel icon_add;
-    private javax.swing.JLabel icon_delete;
-    private javax.swing.JLabel icon_sell;
-    private javax.swing.JLabel icon_update;
-    private javax.swing.JLabel icon_view;
+    private javax.swing.JButton btn_exit_home;
+    private javax.swing.JButton iconAddMed;
+    private javax.swing.JButton iconDelete;
+    private javax.swing.JButton iconReservation;
+    private javax.swing.JButton iconSell;
+    private javax.swing.JButton iconUpdate;
+    private javax.swing.JButton iconView;
     private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblReservation;
     private javax.swing.JLabel lbl_dashboard_head;
     private javax.swing.JLabel lbl_sell;
     private javax.swing.JLabel lbl_sell1;

@@ -24,6 +24,8 @@ public class adminLogin extends javax.swing.JFrame {
     public adminLogin() {
         initComponents();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +109,7 @@ public class adminLogin extends javax.swing.JFrame {
 
         lbl_image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin_login_page.jpeg"))); // NOI18N
         lbl_image.setOpaque(true);
-        jPanel1.add(lbl_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 410));
+        jPanel1.add(lbl_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 660, 410));
 
         lbl_error.setFont(new java.awt.Font("Cascadia Code", 3, 18)); // NOI18N
         lbl_error.setText("Email or password not correct !!");
@@ -132,6 +134,7 @@ public class adminLogin extends javax.swing.JFrame {
         String password = txt_password.getText();
         String testEmail= null;
         String testPassword = null;
+        int adminId = -1;
         
         try{
             
@@ -141,13 +144,15 @@ public class adminLogin extends javax.swing.JFrame {
             ResultSet rs;
             conn = connectdb.createconnection();
             st = conn.createStatement();
-            rs = st.executeQuery("SELECT email,pass FROM admin WHERE email= '" + email + "' and pass= '" + password + "'");
+            rs = st.executeQuery("SELECT id,email,pass FROM admin WHERE email= '" + email + "' and pass= '" + password + "'");
             while(rs.next()){
-                testEmail = rs.getString(1);
-                testPassword = rs.getString(2);
+                adminId = rs.getInt(1);
+                testEmail = rs.getString(2);
+                testPassword = rs.getString(3);
             }
             
             if(email.equals(testEmail) && password.equals(testPassword)){
+                AdminSession.setLoggedIn(true, adminId); // Set the login status
                 setVisible(false);
                 new Home().setVisible(true);
             }else{
