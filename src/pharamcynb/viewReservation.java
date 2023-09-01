@@ -5,6 +5,13 @@
  */
 package pharamcynb;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author HP
@@ -27,21 +34,347 @@ public class viewReservation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        lblResHeader = new javax.swing.JLabel();
+        btnArrow = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lblAllReservationHeader = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableOfReservation = new javax.swing.JTable();
+        btnReservation = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblSearchReservation = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtSearchClient = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        lblUserId = new javax.swing.JLabel();
+        txtUserAdress = new javax.swing.JTextField();
+        lblUserAdress = new javax.swing.JLabel();
+        txtUserId1 = new javax.swing.JTextField();
+        lblUserName1 = new javax.swing.JLabel();
+        txtUserName1 = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblResHeader.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblResHeader.setText("Reservations");
+
+        btnArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.jpeg"))); // NOI18N
+        btnArrow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArrowActionPerformed(evt);
+            }
+        });
+
+        lblAllReservationHeader.setFont(new java.awt.Font("Tahoma", 2, 28)); // NOI18N
+        lblAllReservationHeader.setText("All Reservation");
+
+        tableOfReservation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "name", "email", "address", "date of birth", "medication name", "Quantity reserved", "price", "date of reservation"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableOfReservation.setRowHeight(24);
+        tableOfReservation.setRowMargin(3);
+        tableOfReservation.setShowHorizontalLines(false);
+        tableOfReservation.setShowVerticalLines(false);
+        jScrollPane1.setViewportView(tableOfReservation);
+
+        btnReservation.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReservation.setText("view reservations");
+        btnReservation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservationActionPerformed(evt);
+            }
+        });
+
+        btnReset.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAllReservationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(397, 397, 397))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(btnReservation)
+                .addGap(109, 109, 109)
+                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(239, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblAllReservationHeader)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReservation)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblSearchReservation.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        lblSearchReservation.setText("Search for a Reservation");
+
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jLabel1.setText("client name");
+
+        txtSearchClient.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblUserId.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblUserId.setText("Client Id");
+
+        txtUserAdress.setBackground(new java.awt.Color(240, 240, 240));
+        txtUserAdress.setBorder(null);
+
+        lblUserAdress.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblUserAdress.setText("Client Adress");
+
+        txtUserId1.setBackground(new java.awt.Color(240, 240, 240));
+        txtUserId1.setBorder(null);
+
+        lblUserName1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblUserName1.setText("Client name");
+
+        txtUserName1.setBackground(new java.awt.Color(240, 240, 240));
+        txtUserName1.setBorder(null);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblUserId)
+                .addGap(365, 365, 365)
+                .addComponent(lblUserAdress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(87, 87, 87)
+                    .addComponent(txtUserId1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(736, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(229, 229, 229)
+                    .addComponent(lblUserName1)
+                    .addContainerGap(625, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(316, 316, 316)
+                    .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(515, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblUserId))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUserAdress)
+                            .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(258, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(txtUserId1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(252, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(33, 33, 33)
+                    .addComponent(lblUserName1)
+                    .addContainerGap(256, Short.MAX_VALUE)))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(txtUserName1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(252, Short.MAX_VALUE)))
+        );
+
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch.setText("Search");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(331, 331, 331)
+                        .addComponent(lblSearchReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(31, 31, 31)
+                                .addComponent(txtSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnSearch)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSearchReservation)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(677, 677, 677)
+                .addComponent(lblResHeader)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblResHeader))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowActionPerformed
+        setVisible(false);
+        new Home().setVisible(true);
+    }//GEN-LAST:event_btnArrowActionPerformed
+
+    private void btnReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservationActionPerformed
+        int adminId = AdminSession.getAdminId();
+        
+        try{
+            Connection conn;
+            Statement st;
+            PreparedStatement ps;
+            ResultSet rs;
+            conn = connectdb.createconnection();
+            st = conn.createStatement();
+            
+            rs = st.executeQuery("SELECT pharma_id FROM pharma WHERE admin_id ='" + adminId + "'");
+            int pharmacyId = -1;
+            if (rs.next()) {
+                pharmacyId = rs.getInt("pharma_id");
+            }
+            
+            rs = st.executeQuery("SELECT Uname,email,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv FROM user\n" +
+                                    "INNER JOIN reservation on user.userID=reservation.userID\n" +
+                                    "INNER JOIN medication on reservation.med_ref_id=medication.md_id\n" +
+                                    "INNER JOIN pharmamed on medication.md_id=pharmamed.med_id\n" +
+                                    "INNER JOIN pharma on pharmamed.ph_id=pharma.pharma_id\n" +
+                                    "WHERE p_id='"+ pharmacyId+ "'");
+            
+            DefaultTableModel model = (DefaultTableModel) tableOfReservation.getModel();
+                model.setRowCount(0);
+                if (!rs.isBeforeFirst()) { // Check if the result set is empty
+                        JOptionPane.showMessageDialog(null, "No reservation found.");
+                    } else {
+                        while (rs.next()) {
+                            model.addRow(new String[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)});
+
+                            }
+                        }
+            
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);    
+            }
+    }//GEN-LAST:event_btnReservationActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tableOfReservation.getModel();
+                model.setRowCount(0);
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +412,27 @@ public class viewReservation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArrow;
+    private javax.swing.JButton btnReservation;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAllReservationHeader;
+    private javax.swing.JLabel lblResHeader;
+    private javax.swing.JLabel lblSearchReservation;
+    private javax.swing.JLabel lblUserAdress;
+    private javax.swing.JLabel lblUserId;
+    private javax.swing.JLabel lblUserName1;
+    private javax.swing.JTable tableOfReservation;
+    private javax.swing.JTextField txtSearchClient;
+    private javax.swing.JTextField txtUserAdress;
+    private javax.swing.JTextField txtUserId1;
+    private javax.swing.JTextField txtUserName1;
     // End of variables declaration//GEN-END:variables
 }

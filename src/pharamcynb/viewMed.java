@@ -5,12 +5,23 @@
  */
 package pharamcynb;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.Document;
 
 /**
  *
@@ -23,6 +34,7 @@ public class viewMed extends javax.swing.JFrame {
      */
     public viewMed() {
         initComponents();
+        
     }
 
     /**
@@ -44,6 +56,7 @@ public class viewMed extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -63,24 +76,9 @@ public class viewMed extends javax.swing.JFrame {
 
         tableOfMedications.setAutoCreateRowSorter(true);
         tableOfMedications.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tableOfMedications.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         tableOfMedications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -105,6 +103,10 @@ public class viewMed extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableOfMedications.setRowHeight(20);
+        tableOfMedications.setRowMargin(2);
+        tableOfMedications.setShowHorizontalLines(false);
+        tableOfMedications.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tableOfMedications);
 
         btnMedViw.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -136,22 +138,19 @@ public class viewMed extends javax.swing.JFrame {
             }
         });
 
+        btnPrint.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/printer_icon.jpeg"))); // NOI18N
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(256, 256, 256)
                 .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,10 +159,23 @@ public class viewMed extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSearch)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMedViw, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(378, 378, 378))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(240, 240, 240))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addComponent(lblHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(btnMedViw, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(176, 176, 176)
+                        .addComponent(btnPrint)))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,15 +192,19 @@ public class viewMed extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(btnMedViw, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMedViw, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrint))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,6 +215,7 @@ public class viewMed extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedViwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedViwActionPerformed
+
         int adminId = AdminSession.getAdminId();
         
         try{
@@ -219,23 +236,29 @@ public class viewMed extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tableOfMedications.getModel();
                 model.setRowCount(0);
 
-                while (rs.next()) {
-                    model.addRow(new String[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
+                    if (!rs.isBeforeFirst()) { // Check if the result set is empty
+                        JOptionPane.showMessageDialog(null, "No medication found.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        while (rs.next()) {
+                            model.addRow(new String[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
 
-                }
+                            }
+                        }
+               
             
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnMedViwActionPerformed
-
+    
     private void btnArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowActionPerformed
         setVisible(false);
         new Home().setVisible(true);
     }//GEN-LAST:event_btnArrowActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
         String medicationName = txtSearch.getText();
         int adminId = AdminSession.getAdminId();
         
@@ -258,7 +281,7 @@ public class viewMed extends javax.swing.JFrame {
                 model.setRowCount(0);
                 
                 if (!rs.isBeforeFirst()) { // Check if the result set is empty
-            JOptionPane.showMessageDialog(null, "Medication does not exist.");
+            JOptionPane.showMessageDialog(null, "Medication does not exist.", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 while (rs.next()) {
                     model.addRow(new String[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
@@ -268,11 +291,45 @@ public class viewMed extends javax.swing.JFrame {
             
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        printRecord(jScrollPane1);
+        setVisible(false);
+        new viewMed().setVisible(true);
+    }//GEN-LAST:event_btnPrintActionPerformed
+    
+    
+    private void printRecord(JScrollPane jScrollPane1) {
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        pj.setJobName("Print Record");
+        pj.setPrintable((Graphics graphics, PageFormat pageFormat, int pageIndex) -> {
+            if (pageIndex > 0) {
+                return Printable.NO_SUCH_PAGE;
+            }
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            graphics2D.translate(pageFormat.getImageableX() * 2, pageFormat.getImageableY() * 2);
+            graphics2D.scale(0.5, 0.5);
+            jScrollPane1.paint(graphics2D);
+            return Printable.PAGE_EXISTS;
+
+        });
+        boolean returningResult = pj.printDialog();
+        if (returningResult) {
+            try {
+                pj.print();
+
+            } catch (PrinterException printerException) {
+                JOptionPane.showMessageDialog(this, "Print Error" + printerException.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -311,6 +368,7 @@ public class viewMed extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArrow;
     private javax.swing.JButton btnMedViw;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnSearch;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
