@@ -218,10 +218,11 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(iconDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconReservation))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_sell4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_sell3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblReservation))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_sell3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblReservation)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -246,6 +247,7 @@ public class Home extends javax.swing.JFrame {
         if (a == 0) {
             System.exit(0);
         }
+        new adminLogin().setVisible(true);
     }//GEN-LAST:event_btn_exit_homeActionPerformed
 
     private void iconSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iconSellActionPerformed

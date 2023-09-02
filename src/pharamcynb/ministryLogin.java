@@ -6,6 +6,12 @@
 
 package pharamcynb;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -15,6 +21,7 @@ public class ministryLogin extends javax.swing.JFrame {
     /** Creates new form ministryLogin */
     public ministryLogin() {
         initComponents();
+        lbl_error.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -26,21 +33,196 @@ public class ministryLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jPanel1 = new javax.swing.JPanel();
+        lblLogin = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        lblPosition = new javax.swing.JLabel();
+        txtPosition = new javax.swing.JComboBox<>();
+        btnLogin = new javax.swing.JButton();
+        lbl_error = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblLogin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblLogin.setForeground(new java.awt.Color(0, 177, 175));
+        lblLogin.setText("Login");
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ministryOfHealthLogo.png"))); // NOI18N
+
+        lblEmail.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(0, 177, 175));
+        lblEmail.setText("Email");
+
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(0, 177, 175));
+        txtEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblPassword.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(0, 177, 175));
+        lblPassword.setText("Password");
+
+        txtPassword.setForeground(new java.awt.Color(0, 177, 175));
+        txtPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtPassword.setEchoChar('*');
+
+        lblPosition.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblPosition.setForeground(new java.awt.Color(0, 177, 175));
+        lblPosition.setText("Position");
+
+        txtPosition.setForeground(new java.awt.Color(0, 177, 175));
+        txtPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "Head", "Employee" }));
+        txtPosition.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
+        lbl_error.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_error.setText("Login error please check your inputs");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPosition)
+                    .addComponent(lblPassword)
+                    .addComponent(lblEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtEmail)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                    .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(219, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(133, 133, 133)
+                        .addComponent(lblLogo)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLogin)
+                        .addGap(265, 265, 265))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_error)
+                        .addGap(196, 196, 196))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblLogo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addComponent(lbl_error)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPosition)
+                    .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(btnLogin)
+                .addGap(44, 44, 44))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        String position = (String) txtPosition.getSelectedItem();
+        String testEmail= null;
+        String testPassword = null;
+        String testPosition =null;
+        int adminId = -1;
+        
+        try{
+            
+            Connection conn;
+            Statement st;
+            ResultSet rs;
+            conn = connectdb.createconnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT id,Admin_email,Admin_password,position FROM ministry WHERE Admin_email= '" + email + "' and Admin_password= '" + password + "' "
+                    + "AND position='"+position+"'");
+            while(rs.next()){
+                adminId = rs.getInt(1);
+                testEmail = rs.getString(2);
+                testPassword = rs.getString(3);
+                testPosition = rs.getString(4);
+            }
+            
+            if(email.equals(testEmail) && password.equals(testPassword)){
+                if("Head".equals(testPosition)){
+                    AdminSession.setMinistryAdminId(true, adminId); // Set the login status
+                    setVisible(false);
+                    new HeadHome().setVisible(true);
+                }else{
+                    AdminSession.setMinistryAdminId(true, adminId); // Set the login status
+                    setVisible(false);
+                    new EmployeeHome().setVisible(true);
+                }
+            }else{
+                lbl_error.setVisible(true);
+            }
+            
+            
+            
+        } catch (Exception e) {
+           JOptionPane.showMessageDialog(null,e);
+        }
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,6 +260,18 @@ public class ministryLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPosition;
+    private javax.swing.JLabel lbl_error;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JComboBox<String> txtPosition;
     // End of variables declaration//GEN-END:variables
 
 }

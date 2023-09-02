@@ -12,6 +12,7 @@ package pharamcynb;
 public class AdminSession {
     private static boolean isLoggedIn = false;
     private static int adminId = -1;
+    private static int ministryAdminId = -1;
 
     public static boolean isLoggedIn() {
         return isLoggedIn;
@@ -24,6 +25,15 @@ public class AdminSession {
     
     public static int getAdminId() {
         return adminId;
+    }
+    
+    public static void setMinistryAdminId(boolean loggedIn,int id) {
+        isLoggedIn = loggedIn;
+        ministryAdminId = id;
+    }
+
+    public static int getMinistryAdminId() {
+        return ministryAdminId;
     }
 }
 

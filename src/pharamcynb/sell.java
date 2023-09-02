@@ -347,6 +347,7 @@ public class sell extends javax.swing.JFrame {
 
         btnSell.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSell.setText("Sell");
+        btnSell.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSellActionPerformed(evt);
