@@ -41,10 +41,9 @@ public class viewReservation extends javax.swing.JFrame {
         conn = connectdb.createconnection();
         st = conn.createStatement();
         
-        rs= st.executeQuery("SELECT pharma_id,phName,address From pharma WHERE admin_id='"+ adminId + "'");
+        rs= st.executeQuery("SELECT phName,address From pharma WHERE admin_id='"+ adminId + "'");
         if(rs.next()){
             String pharmacyName = rs.getString("phName");
-            String pharmaID = rs.getString("pharma_id");
             lblPharmacyName.setText(pharmacyName);
             lblAdressHeader.setText(rs.getString("address"));
         }

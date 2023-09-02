@@ -5,6 +5,21 @@
  */
 package pharamcynb;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author HP
@@ -16,6 +31,42 @@ public class sell extends javax.swing.JFrame {
      */
     public sell() {
         initComponents();
+        
+        int adminId = AdminSession.getAdminId();
+        txtUStoLBP.setEditable(false);
+        txtPrice.setEditable(false);
+        
+        
+        try{
+            
+            Connection conn;
+            Statement st;
+            ResultSet rs;
+            conn = connectdb.createconnection();
+            st = conn.createStatement();
+            
+            rs = st.executeQuery("SELECT phName,address,name From admin INNER JOIN pharma ON admin.id=pharma.admin_id WHERE admin_id='"+ adminId + "'");
+            if(rs.next()){
+                String pharmacyName = rs.getString("phName");
+                lblPhName.setText(pharmacyName);
+                lblPhAdress.setText(rs.getString("address"));
+                lblOwnerName.setText(rs.getString("name"));
+            }
+            
+            // Get the current local date and time
+            LocalDateTime currentDateTime = LocalDateTime.now();
+
+            // Format the date and time as a string
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = currentDateTime.format(formatter);
+
+            // Set the formatted date and time as the text of the label
+            lblDate.setText(formattedDateTime);
+            
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     /**
@@ -27,21 +78,466 @@ public class sell extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        lblSellHeader = new javax.swing.JLabel();
+        btnArrow = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblPhName = new javax.swing.JLabel();
+        lblPhAdress = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblFName = new javax.swing.JLabel();
+        txtFName = new javax.swing.JTextField();
+        lblMidName = new javax.swing.JLabel();
+        txtMiddleName = new javax.swing.JTextField();
+        lblLastName = new javax.swing.JLabel();
+        txtLastName = new javax.swing.JTextField();
+        lblMedName = new javax.swing.JLabel();
+        txtMedName = new javax.swing.JTextField();
+        lblQuantity = new javax.swing.JLabel();
+        txtQuantity = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblTotalPrice = new javax.swing.JLabel();
+        txtPrice = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        lblOwner = new javax.swing.JLabel();
+        lblOwnerName = new javax.swing.JLabel();
+        lblSignature = new javax.swing.JLabel();
+        lblUStoLBP = new javax.swing.JLabel();
+        txtUStoLBP = new javax.swing.JTextField();
+        lblLBP = new javax.swing.JLabel();
+        txtPriceLBP = new javax.swing.JTextField();
+        lblUSD = new javax.swing.JLabel();
+        lblLBPPrice = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnSell = new javax.swing.JButton();
+        btnTotalPrice = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblSellHeader.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblSellHeader.setText("Sell Medication ");
+
+        btnArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow.jpeg"))); // NOI18N
+        btnArrow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArrowActionPerformed(evt);
+            }
+        });
+
+        lblPhName.setFont(new java.awt.Font("Tahoma", 3, 22)); // NOI18N
+        lblPhName.setText("Pharmacy Name");
+
+        lblPhAdress.setFont(new java.awt.Font("Tahoma", 3, 22)); // NOI18N
+        lblPhAdress.setText("Adress");
+
+        lblDate.setFont(new java.awt.Font("Tahoma", 3, 22)); // NOI18N
+        lblDate.setText("Date");
+
+        lblFName.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblFName.setText("Client First Name");
+
+        txtFName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtFName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblMidName.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblMidName.setText("Middle Name");
+
+        txtMiddleName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMiddleName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblLastName.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblLastName.setText("Last Name");
+
+        txtLastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLastName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblMedName.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblMedName.setText("Medication Name");
+
+        txtMedName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMedName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtMedName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMedNameActionPerformed(evt);
+            }
+        });
+
+        lblQuantity.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblQuantity.setText("Quantity");
+
+        txtQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtQuantity.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblTotalPrice.setFont(new java.awt.Font("Trebuchet MS", 1, 17)); // NOI18N
+        lblTotalPrice.setText("Price");
+
+        txtPrice.setBackground(new java.awt.Color(240, 240, 240));
+        txtPrice.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPrice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPriceActionPerformed(evt);
+            }
+        });
+
+        lblOwner.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblOwner.setText("Owner");
+
+        lblOwnerName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblOwnerName.setText("Owner Name");
+
+        lblSignature.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        lblSignature.setText("Signature:");
+
+        lblUStoLBP.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblUStoLBP.setText("US $1 =");
+
+        txtUStoLBP.setBackground(new java.awt.Color(240, 240, 240));
+        txtUStoLBP.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        txtUStoLBP.setText("85500");
+        txtUStoLBP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblLBP.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblLBP.setText("LBP");
+
+        txtPriceLBP.setBackground(new java.awt.Color(240, 240, 240));
+        txtPriceLBP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPriceLBP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtPriceLBP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPriceLBPActionPerformed(evt);
+            }
+        });
+
+        lblUSD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblUSD.setText("USD");
+
+        lblLBPPrice.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblLBPPrice.setText("LBP");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator2)
+            .addComponent(jSeparator3)
+            .addComponent(jSeparator4)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(lblOwner)
+                .addGap(18, 18, 18)
+                .addComponent(lblOwnerName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSignature, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(304, 304, 304))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(txtPriceLBP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(380, 380, 380))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lblPhName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPhAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblFName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblMidName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblLastName))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(lblMedName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(lblQuantity)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblUStoLBP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUStoLBP, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblLBP))
+                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(379, 379, 379)
+                        .addComponent(lblUSD)
+                        .addGap(98, 98, 98)
+                        .addComponent(lblLBPPrice)))
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhName)
+                    .addComponent(lblPhAdress)
+                    .addComponent(lblDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFName)
+                    .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMidName)
+                    .addComponent(txtMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMedName)
+                    .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUStoLBP)
+                    .addComponent(txtUStoLBP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLBP))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLBPPrice)
+                    .addComponent(lblUSD))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPriceLBP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOwner)
+                    .addComponent(lblOwnerName)
+                    .addComponent(lblSignature))
+                .addGap(38, 38, 38))
+        );
+
+        btnSell.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSell.setText("Sell");
+        btnSell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSellActionPerformed(evt);
+            }
+        });
+
+        btnTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnTotalPrice.setText("Total Price");
+        btnTotalPrice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTotalPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTotalPriceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(301, 301, 301)
+                        .addComponent(lblSellHeader))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSell, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(btnTotalPrice)
+                .addGap(410, 410, 410))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSellHeader))
+                .addGap(42, 42, 42)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSell, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowActionPerformed
+        setVisible(false);
+        new Home().setVisible(true);
+    }//GEN-LAST:event_btnArrowActionPerformed
+
+    private void txtMedNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMedNameActionPerformed
+
+    private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
+        int adminId = AdminSession.getAdminId();
+        String medicationName = txtMedName.getText();
+        int Quantity = Integer.parseInt(txtQuantity.getText());
+        String dollarRate = txtUStoLBP.getText();
+        
+        
+        try{
+            
+            Connection conn;
+            Statement st;
+            ResultSet rs;
+            conn = connectdb.createconnection();
+            st = conn.createStatement();
+            
+            rs = st.executeQuery("SELECT pharma_id FROM pharma WHERE admin_id ='" + adminId + "'");
+            int pharmacyId = -1;
+            if (rs.next()) {
+                pharmacyId = rs.getInt("pharma_id");
+            }
+            
+            st.executeUpdate("UPDATE pharmamed \n" +
+                                    "INNER JOIN medication ON pharmamed.med_id=medication.md_id\n" +
+                                    "SET pharmamed.quantity=pharmamed.quantity - "+Quantity+"\n" +
+                                    "WHERE ph_id='"+ pharmacyId + "' AND medication.medName='" + medicationName+ "'");
+            
+            rs = st.executeQuery("SELECT med_id From pharmamed INNER JOIN medication on pharmamed.med_id=medication.md_id WHERE ph_id='"+pharmacyId+"'"
+                    + " AND medication.medName='"+medicationName+"'");
+            int medicationId = -1;
+            if(rs.next()){
+                medicationId = rs.getInt("med_id");
+            }
+            
+            rs = st.executeQuery("SELECT quantity FROM pharmamed WHERE med_id='"+medicationId+"' AND ph_id='"+pharmacyId+"'");
+            int quantity = -1;
+            if(rs.next()){
+                quantity = rs.getInt("quantity");
+            }
+            if(quantity == 0){
+                st.executeUpdate("DELETE FROM pharmamed WHERE quantity='0' AND ph_id='"+pharmacyId+"'");
+            }
+            
+            printRecord(jPanel1);
+            setVisible(false);
+            new sell().setVisible(true);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnSellActionPerformed
+
+    private void printRecord(JPanel jPanel1) {
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        pj.setJobName("Print Record");
+        pj.setPrintable((Graphics graphics, PageFormat pageFormat, int pageIndex) -> {
+            if (pageIndex > 0) {
+                return Printable.NO_SUCH_PAGE;
+            }
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            graphics2D.translate(pageFormat.getImageableX() * 2, pageFormat.getImageableY() * 2);
+            graphics2D.scale(0.5, 0.5);
+            jPanel1.paint(graphics2D);
+            return Printable.PAGE_EXISTS;
+
+        });
+        boolean returningResult = pj.printDialog();
+        if (returningResult) {
+            try {
+                pj.print();
+
+            } catch (PrinterException printerException) {
+                JOptionPane.showMessageDialog(this, "Print Error" + printerException.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+    }
+    
+    private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
+        
+    }//GEN-LAST:event_txtPriceActionPerformed
+
+    private void btnTotalPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTotalPriceActionPerformed
+        int Quantity = Integer.parseInt(txtQuantity.getText());
+        int LiraRate =Integer.parseInt(txtUStoLBP.getText());
+        String medicationName = txtMedName.getText();
+        
+        try{
+            
+            Connection conn;
+            Statement st;
+            ResultSet rs;
+            conn = connectdb.createconnection();
+            st = conn.createStatement();
+            
+            rs = st.executeQuery("SELECT price from pharmamed INNER JOIN medication on pharmamed.med_id=medication.md_id WHERE medication.medName='"+medicationName+"'");
+            int price= -1;
+            if(rs.next()){
+                price = rs.getInt("price");
+            }
+            int totalPriceUSD = Quantity * price;
+            int totalPriceLBP = (Quantity * price) * LiraRate;
+            String totalPriceStringLBP= Integer.toString(totalPriceLBP);
+            String totalPriceStringUSD = Integer.toString(totalPriceUSD);
+            
+            if(Quantity >0){
+                txtPriceLBP.setText(totalPriceStringLBP);
+                txtPrice.setText(totalPriceStringUSD);
+            }else{
+                JOptionPane.showMessageDialog(null,"please enter a valid number for quantity field ");
+            }
+            
+            
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnTotalPriceActionPerformed
+
+    private void txtPriceLBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceLBPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPriceLBPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +575,39 @@ public class sell extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnArrow;
+    private javax.swing.JButton btnSell;
+    private javax.swing.JButton btnTotalPrice;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblFName;
+    private javax.swing.JLabel lblLBP;
+    private javax.swing.JLabel lblLBPPrice;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblMedName;
+    private javax.swing.JLabel lblMidName;
+    private javax.swing.JLabel lblOwner;
+    private javax.swing.JLabel lblOwnerName;
+    private javax.swing.JLabel lblPhAdress;
+    private javax.swing.JLabel lblPhName;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblSellHeader;
+    private javax.swing.JLabel lblSignature;
+    private javax.swing.JLabel lblTotalPrice;
+    private javax.swing.JLabel lblUSD;
+    private javax.swing.JLabel lblUStoLBP;
+    private javax.swing.JTextField txtFName;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtMedName;
+    private javax.swing.JTextField txtMiddleName;
+    private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtPriceLBP;
+    private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtUStoLBP;
     // End of variables declaration//GEN-END:variables
 }
