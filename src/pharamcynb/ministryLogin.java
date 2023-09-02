@@ -214,6 +214,9 @@ public class ministryLogin extends javax.swing.JFrame {
                 }
             }else{
                 lbl_error.setVisible(true);
+                txtEmail.setText("");
+                txtPassword.setText("");
+                
             }
             
             

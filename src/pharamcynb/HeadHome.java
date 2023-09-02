@@ -126,18 +126,39 @@ public class HeadHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddPharmacistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPharmacistActionPerformed
+        if (AdminSession.isLoggedIn()) {
         setVisible(false);
         new AddPharmacist().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new ministryLogin().setVisible(true);
+        }
     }//GEN-LAST:event_btnAddPharmacistActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        if (AdminSession.isLoggedIn()) {
         setVisible(false);
         new updatePharmacist().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new ministryLogin().setVisible(true);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnViewPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPharmacyActionPerformed
+        if (AdminSession.isLoggedIn()) {
         setVisible(false);
         new viewPharmacy().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new ministryLogin().setVisible(true);
+        }
     }//GEN-LAST:event_btnViewPharmacyActionPerformed
 
     private void btn_exit_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_homeActionPerformed
