@@ -186,8 +186,16 @@ public class updatePharmacist extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnArrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrowActionPerformed
-        setVisible(false);
-        new HeadHome().setVisible(true);
+        if(AdminSession.isLoggedIn()){
+            setVisible(false);
+            new HeadHome().setVisible(true);
+        }else {
+            // Redirect to adminLogin.java
+            setVisible(false);
+            AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+            new ministryLogin().setVisible(true);
+        }
+        
     }//GEN-LAST:event_btnArrowActionPerformed
 
     /**

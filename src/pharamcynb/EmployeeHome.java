@@ -5,6 +5,9 @@
  */
 package pharamcynb;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -29,9 +32,10 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
-        lblBackground = new javax.swing.JLabel();
         btnViewPharmacy = new javax.swing.JButton();
         lblViewPharmacy = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
+        btn_exit_home = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -48,22 +52,37 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ministryOfHealthLogoBackground.png"))); // NOI18N
-        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
-
         btnViewPharmacy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pharmacy(1).png"))); // NOI18N
         btnViewPharmacy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(btnViewPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 21, -1, -1));
+        btnViewPharmacy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewPharmacyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnViewPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
 
         lblViewPharmacy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblViewPharmacy.setText("View Pharmacy information");
-        jPanel1.add(lblViewPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel1.add(lblViewPharmacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ministryOfHealthLogoBackground.png"))); // NOI18N
+        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+
+        btn_exit_home.setBackground(new java.awt.Color(255, 0, 0));
+        btn_exit_home.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exit_home.setText("Exit");
+        btn_exit_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_homeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_exit_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,6 +91,28 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnViewPharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPharmacyActionPerformed
+        if (AdminSession.isLoggedIn()) {
+        setVisible(false);
+        new viewPharmacy().setVisible(true);
+        } else {
+        // Redirect to adminLogin.java
+        setVisible(false);
+        AdminSession.setLoggedIn(false,-1); // Reset isLoggedIn status
+        new ministryLogin().setVisible(true);
+        }
+    }//GEN-LAST:event_btnViewPharmacyActionPerformed
+
+    private void btn_exit_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_homeActionPerformed
+        btn_exit_home.setBackground(Color.red);
+        btn_exit_home.setOpaque(true);
+        int a = JOptionPane.showConfirmDialog(null, "Do you really want to Exit Application", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            System.exit(0);
+        }
+        new adminLogin().setVisible(true);
+    }//GEN-LAST:event_btn_exit_homeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +151,7 @@ public class EmployeeHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnViewPharmacy;
+    private javax.swing.JButton btn_exit_home;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBackground;
