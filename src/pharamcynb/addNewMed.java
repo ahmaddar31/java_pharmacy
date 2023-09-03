@@ -5,10 +5,12 @@
  */
 package pharamcynb;
 
+import pharamcynb.AdminSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import pharamcynb.connectdb;
 
 /**
  *

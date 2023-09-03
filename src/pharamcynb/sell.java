@@ -5,6 +5,7 @@
  */
 package pharamcynb;
 
+import pharamcynb.AdminSession;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import pharamcynb.connectdb;
 
 /**
  *

@@ -5,9 +5,11 @@
  */
 package pharamcynb;
 
+import pharamcynb.AdminSession;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import pharamcynb.connectdb;
 
 /**
  *

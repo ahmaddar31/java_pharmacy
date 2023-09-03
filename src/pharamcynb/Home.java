@@ -5,6 +5,13 @@
  */
 package pharamcynb;
 
+import pharamcynb.sell;
+import pharamcynb.updateMed;
+import pharamcynb.viewMed;
+import pharamcynb.viewReservation;
+import pharamcynb.addNewMed;
+import pharamcynb.adminLogin;
+import pharamcynb.AdminSession;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 

@@ -5,6 +5,7 @@
  */
 package pharamcynb;
 
+import pharamcynb.AdminSession;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
@@ -22,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.Document;
+import pharamcynb.connectdb;
 
 /**
  *
