@@ -109,6 +109,14 @@ public class viewReservation extends javax.swing.JFrame {
         txtDateOfReservation = new javax.swing.JTextField();
         lblAdressHeader = new javax.swing.JLabel();
         dateLabel = new javax.swing.JLabel();
+        lblUsdToLbp = new javax.swing.JLabel();
+        txtUsdToLbp = new javax.swing.JTextField();
+        lblPriceLbp = new javax.swing.JLabel();
+        txtPriceLbp = new javax.swing.JTextField();
+        lblDelivery = new javax.swing.JLabel();
+        txtDelivery = new javax.swing.JTextField();
+        lblLbp = new javax.swing.JLabel();
+        txtLbp = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnSell = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -273,7 +281,7 @@ public class viewReservation extends javax.swing.JFrame {
         txtQtyReserved.setBorder(null);
 
         lblPrice.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        lblPrice.setText("Price");
+        lblPrice.setText("Price in $");
 
         txtPrice.setBackground(new java.awt.Color(240, 240, 240));
         txtPrice.setBorder(null);
@@ -289,6 +297,35 @@ public class viewReservation extends javax.swing.JFrame {
 
         dateLabel.setFont(new java.awt.Font("Tahoma", 3, 22)); // NOI18N
         dateLabel.setText("Date");
+
+        lblUsdToLbp.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblUsdToLbp.setText("USD 1$");
+
+        txtUsdToLbp.setBackground(new java.awt.Color(240, 240, 240));
+        txtUsdToLbp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsdToLbp.setBorder(null);
+
+        lblPriceLbp.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblPriceLbp.setText("price in LBP");
+
+        txtPriceLbp.setBackground(new java.awt.Color(240, 240, 240));
+        txtPriceLbp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPriceLbp.setBorder(null);
+
+        lblDelivery.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblDelivery.setText("Delivery");
+
+        txtDelivery.setBackground(new java.awt.Color(240, 240, 240));
+        txtDelivery.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDelivery.setBorder(null);
+
+        lblLbp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLbp.setText("USD 1$");
+
+        txtLbp.setBackground(new java.awt.Color(240, 240, 240));
+        txtLbp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtLbp.setText("85500");
+        txtLbp.setBorder(null);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -306,16 +343,34 @@ public class viewReservation extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(lblMedName1)
                         .addGap(11, 11, 11)
-                        .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblQtyReserved)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtQtyReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblPrice)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPrice))
+                            .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(lblPrice)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblPriceLbp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPriceLbp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblLbp)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(lblQtyReserved)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtQtyReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDelivery)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDelivery)
+                                .addGap(139, 139, 139)
+                                .addComponent(lblUsdToLbp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsdToLbp, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -323,8 +378,8 @@ public class viewReservation extends javax.swing.JFrame {
                         .addComponent(lblPharmacyName, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addComponent(lblAdressHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(lblUserId)
@@ -339,9 +394,12 @@ public class viewReservation extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDOB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblDOB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLbp, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(217, 217, 217))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -370,17 +428,29 @@ public class viewReservation extends javax.swing.JFrame {
                     .addComponent(lblDOB)
                     .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblMedName1)
+                        .addComponent(lblQtyReserved)
+                        .addComponent(txtQtyReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblUsdToLbp)
+                        .addComponent(txtUsdToLbp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDelivery)
+                        .addComponent(txtDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMedName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMedName1)
-                    .addComponent(lblQtyReserved)
-                    .addComponent(txtQtyReserved, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrice)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPriceLbp)
+                    .addComponent(txtPriceLbp, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDateOfReservation)
-                    .addComponent(txtDateOfReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDateOfReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLbp)
+                    .addComponent(txtLbp, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -428,11 +498,11 @@ public class viewReservation extends javax.swing.JFrame {
                         .addComponent(btnSell, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
                         .addComponent(btnDelete)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 770, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(lblClientId)
                         .addGap(31, 31, 31)
@@ -441,9 +511,9 @@ public class viewReservation extends javax.swing.JFrame {
                         .addComponent(lblMedicationName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtMedNameSearched, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSearch)
-                        .addContainerGap())))
+                        .addGap(27, 27, 27))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +549,7 @@ public class viewReservation extends javax.swing.JFrame {
                         .addComponent(lblResHeader))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(272, Short.MAX_VALUE))
@@ -573,6 +643,8 @@ public class viewReservation extends javax.swing.JFrame {
         int adminId = AdminSession.getAdminId();
         int id = Integer.parseInt(txtSearchClient.getText());
         String medName = txtMedNameSearched.getText();
+        int quantity_sold = Integer.parseInt(txtQtyReserved.getText());
+        int price = Integer.parseInt(txtPrice.getText());
         
         try{
             
@@ -600,6 +672,7 @@ public class viewReservation extends javax.swing.JFrame {
             if(rs.next()){
                 medicationId = rs.getInt("med_id");
             }
+            
             
             rs = st.executeQuery("SELECT quantity FROM pharmamed WHERE med_id='"+medicationId+"' AND ph_id='"+pharmacyId+"'");
             int quantity = -1;
@@ -662,6 +735,10 @@ public class viewReservation extends javax.swing.JFrame {
             txtQtyReserved.setEditable(false);
             txtPrice.setEditable(false);
             txtDateOfReservation.setEditable(false);
+            txtPriceLbp.setEditable(false);
+            txtDelivery.setEditable(false);
+            txtLbp.setEditable(false);
+            int dollarRate = Integer.parseInt(txtLbp.getText());
             
             Connection conn;
             Statement st;
@@ -669,7 +746,7 @@ public class viewReservation extends javax.swing.JFrame {
             conn = connectdb.createconnection();
             st = conn.createStatement();
             
-            rs = st.executeQuery("SELECT user.userID,Uname,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv FROM user\n" +
+            rs = st.executeQuery("SELECT user.userID,Uname,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv,delivery FROM user\n" +
                                     "INNER JOIN reservation on user.userID=reservation.userID\n" +
                                     "INNER JOIN medication on reservation.med_ref_id=medication.md_id\n" +
                                     "WHERE reservation.r_id='"+id+"' AND medication.medName='"+ MedicationName + "'");
@@ -682,6 +759,10 @@ public class viewReservation extends javax.swing.JFrame {
                 txtQtyReserved.setText(rs.getString(6));
                 txtPrice.setText(rs.getString(7));
                 txtDateOfReservation.setText(rs.getString(8));
+                txtDelivery.setText(rs.getString(9));
+                int total_price= Integer.parseInt(rs.getString(7)) * dollarRate;
+                String totalPriceString = Integer.toString(total_price);
+                txtPriceLbp.setText(totalPriceString);
             }
             
         }catch(Exception e){
@@ -786,24 +867,32 @@ public class viewReservation extends javax.swing.JFrame {
     private javax.swing.JLabel lblClientId;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblDateOfReservation;
+    private javax.swing.JLabel lblDelivery;
+    private javax.swing.JLabel lblLbp;
     private javax.swing.JLabel lblMedName1;
     private javax.swing.JLabel lblMedicationName;
     private javax.swing.JLabel lblPharmacyName;
     private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lblPriceLbp;
     private javax.swing.JLabel lblQtyReserved;
     private javax.swing.JLabel lblResHeader;
     private javax.swing.JLabel lblSearchReservation;
+    private javax.swing.JLabel lblUsdToLbp;
     private javax.swing.JLabel lblUserAdress;
     private javax.swing.JLabel lblUserId;
     private javax.swing.JLabel lblUserName1;
     private javax.swing.JTable tableOfReservation;
     private javax.swing.JTextField txtDOB;
     private javax.swing.JTextField txtDateOfReservation;
+    private javax.swing.JTextField txtDelivery;
+    private javax.swing.JTextField txtLbp;
     private javax.swing.JTextField txtMedName;
     private javax.swing.JTextField txtMedNameSearched;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtPriceLbp;
     private javax.swing.JTextField txtQtyReserved;
     private javax.swing.JTextField txtSearchClient;
+    private javax.swing.JTextField txtUsdToLbp;
     private javax.swing.JTextField txtUserAdress;
     private javax.swing.JTextField txtUserId;
     private javax.swing.JTextField txtUserName;
