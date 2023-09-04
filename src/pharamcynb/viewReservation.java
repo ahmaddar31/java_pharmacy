@@ -85,7 +85,7 @@ public class viewReservation extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblSearchReservation = new javax.swing.JLabel();
-        lblClientEmail = new javax.swing.JLabel();
+        lblClientId = new javax.swing.JLabel();
         txtSearchClient = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         lblUserId = new javax.swing.JLabel();
@@ -143,15 +143,15 @@ public class viewReservation extends javax.swing.JFrame {
 
         tableOfReservation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "name", "email", "address", "date of birth", "medication name", "Quantity reserved", "price", "date of reservation"
+                "Id", "name", "email", "address", "date of birth", "medication name", "Quantity reserved", "price", "date of reservation"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -186,18 +186,20 @@ public class viewReservation extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAllReservationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(397, 397, 397))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(279, 279, 279)
                 .addComponent(btnReservation)
                 .addGap(109, 109, 109)
                 .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblAllReservationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(397, 397, 397))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 971, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,8 +218,8 @@ public class viewReservation extends javax.swing.JFrame {
         lblSearchReservation.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         lblSearchReservation.setText("Search for a Reservation");
 
-        lblClientEmail.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        lblClientEmail.setText("client email");
+        lblClientId.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        lblClientId.setText("Reservation id");
 
         txtSearchClient.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -226,6 +228,11 @@ public class viewReservation extends javax.swing.JFrame {
 
         txtDOB.setBackground(new java.awt.Color(240, 240, 240));
         txtDOB.setBorder(null);
+        txtDOB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDOBActionPerformed(evt);
+            }
+        });
 
         lblUserAdress.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         lblUserAdress.setText("Client Adress");
@@ -330,12 +337,12 @@ public class viewReservation extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblUserAdress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtUserAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblDOB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(190, 190, 190))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(217, 217, 217))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,23 +427,23 @@ public class viewReservation extends javax.swing.JFrame {
                         .addGap(422, 422, 422)
                         .addComponent(btnSell, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
-                        .addComponent(btnDelete))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblClientEmail)
-                                .addGap(31, 31, 31)
-                                .addComponent(txtSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblMedicationName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMedNameSearched, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSearch)
-                                .addGap(69, 69, 69)))))
+                        .addComponent(btnDelete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblClientId)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblMedicationName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMedNameSearched, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(btnSearch)
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,7 +452,7 @@ public class viewReservation extends javax.swing.JFrame {
                 .addComponent(lblSearchReservation)
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClientId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearchClient, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(lblMedicationName)
@@ -472,8 +479,8 @@ public class viewReservation extends javax.swing.JFrame {
                         .addComponent(lblResHeader))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(272, Short.MAX_VALUE))
         );
@@ -529,7 +536,7 @@ public class viewReservation extends javax.swing.JFrame {
                 pharmacyId = rs.getInt("pharma_id");
             }
             
-            rs = st.executeQuery("SELECT Uname,email,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv FROM user\n" +
+            rs = st.executeQuery("SELECT r_id,Uname,email,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv FROM user\n" +
                                     "INNER JOIN reservation on user.userID=reservation.userID\n" +
                                     "INNER JOIN medication on reservation.med_ref_id=medication.md_id\n" +
                                     "INNER JOIN pharmamed on medication.md_id=pharmamed.med_id\n" +
@@ -542,7 +549,7 @@ public class viewReservation extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "No reservation found.");
                     } else {
                         while (rs.next()) {
-                            model.addRow(new String[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)});
+                            model.addRow(new String[]{rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)});
 
                             }
                         }
@@ -562,9 +569,9 @@ public class viewReservation extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
-        String email = txtSearchClient.getText();
+ 
         int adminId = AdminSession.getAdminId();
-        String userId = txtUserId.getText();
+        int id = Integer.parseInt(txtSearchClient.getText());
         String medName = txtMedNameSearched.getText();
         
         try{
@@ -579,7 +586,7 @@ public class viewReservation extends javax.swing.JFrame {
                                     "INNER JOIN reservation ON medication.md_id=reservation.med_ref_id\n" +
                                     "INNER JOIN user ON reservation.userID=user.userID\n" +
                                     "SET pharmamed.quantity=pharmamed.quantity - reservation.qtyReserved\n" +
-                                    "WHERE user.email='"+ email + "' AND medication.medName='" + medName+ "'");
+                                    "WHERE user.userID='"+ id + "' AND medication.medName='" + medName+ "'");
             
             rs = st.executeQuery("SELECT pharma_id FROM pharma WHERE admin_id ='" + adminId + "'");
             int pharmacyId = -1;
@@ -603,7 +610,7 @@ public class viewReservation extends javax.swing.JFrame {
                 st.executeUpdate("DELETE FROM pharmamed WHERE quantity='0' AND ph_id='"+pharmacyId+"'");
             }
             
-            st.executeUpdate("DELETE FROM reservation WHERE userID='"+ userId+ "' AND med_ref_id='"+medicationId+"'");
+            st.executeUpdate("DELETE FROM reservation WHERE r_id='"+ id+ "' AND med_ref_id='"+medicationId+"'");
             
             
             printRecord(jPanel4);
@@ -644,7 +651,7 @@ public class viewReservation extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         try{
             
-            String email = txtSearchClient.getText();
+            int id = Integer.parseInt(txtSearchClient.getText());
             String MedicationName = txtMedNameSearched.getText();
             
             txtUserId.setEditable(false);
@@ -665,7 +672,7 @@ public class viewReservation extends javax.swing.JFrame {
             rs = st.executeQuery("SELECT user.userID,Uname,user.address,DOB,medName,qtyReserved,total_price,Date_of_rsv FROM user\n" +
                                     "INNER JOIN reservation on user.userID=reservation.userID\n" +
                                     "INNER JOIN medication on reservation.med_ref_id=medication.md_id\n" +
-                                    "WHERE email='"+email+"' AND medication.medName='"+ MedicationName + "'");
+                                    "WHERE reservation.r_id='"+id+"' AND medication.medName='"+ MedicationName + "'");
             if(rs.next()){
                 txtUserId.setText(rs.getString(1));
                 txtUserName.setText(rs.getString(2));
@@ -718,6 +725,10 @@ public class viewReservation extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e, "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtDOBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDOBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDOBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -772,7 +783,7 @@ public class viewReservation extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblAdressHeader;
     private javax.swing.JLabel lblAllReservationHeader;
-    private javax.swing.JLabel lblClientEmail;
+    private javax.swing.JLabel lblClientId;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblDateOfReservation;
     private javax.swing.JLabel lblMedName1;
