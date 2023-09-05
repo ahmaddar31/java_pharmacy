@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2023 at 08:47 AM
+-- Generation Time: Sep 05, 2023 at 09:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -135,7 +135,7 @@ CREATE TABLE `pharmamed` (
 
 INSERT INTO `pharmamed` (`ph_id`, `med_id`, `quantity`, `price`) VALUES
 (1, 2, 15, 3),
-(1, 25, 15, 3),
+(1, 25, 13, 3),
 (2, 29, 6, 3),
 (2, 30, 1, 6),
 (1, 31, 15, 15),
@@ -168,7 +168,11 @@ CREATE TABLE `reservation` (
 
 INSERT INTO `reservation` (`userID`, `qtyReserved`, `total_price`, `med_ref_id`, `Date_of_rsv`, `p_id`, `r_id`, `delivery`) VALUES
 (2, 1, 2, 39, '2023-09-04 16:56:52', 2, 13, 'No'),
-(2, 1, 3, 25, '2023-09-05 09:29:34', 1, 15, 'No');
+(2, 1, 3, 25, '2023-09-05 09:29:34', 1, 15, 'No'),
+(2, 3, 6, 39, '2023-09-05 09:59:59', 1, 17, 'Yes'),
+(2, 1, 2, 39, '2023-09-05 10:00:09', 2, 18, 'No'),
+(2, 3, 6, 41, '2023-09-05 10:00:22', 2, 19, 'No'),
+(2, 3, 12, 38, '2023-09-05 10:00:41', 1, 20, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -190,7 +194,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`sales_id`, `pharmacy_id`, `medication_id`, `quantity_sold`, `price`, `date_of_sold`) VALUES
-(2, 1, 39, 2, 4, '2023-09-05 09:45:49');
+(2, 1, 39, 2, 4, '2023-09-05 09:45:49'),
+(3, 1, 25, 2, 6, '2023-09-05 09:51:18');
 
 -- --------------------------------------------------------
 
@@ -303,13 +308,13 @@ ALTER TABLE `pharma`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
