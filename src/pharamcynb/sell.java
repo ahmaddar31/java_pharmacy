@@ -452,6 +452,17 @@ public class sell extends javax.swing.JFrame {
                 medicationId = rs.getInt("med_id");
             }
             
+            rs = st.executeQuery("SELECT * FROM sales WHERE pharmacy_id='"+pharmacyId+"' AND medication_id='"+medicationId+"'");
+            if(rs.next()){
+                // medication already exist
+                st.executeUpdate("UPDATE sales SET quantity_sold=quantity_sold + '"+Quantity+"', price = price + '"+Integer.parseInt(txtPrice.getText())+"' ");
+                System.out.println("updated");
+            }else{
+                // medication doesn't exist
+                st.executeUpdate("INSERT INTO sales (pharmacy_id, medication_id, quantity_sold, price) VALUES ('"+pharmacyId+"','"+medicationId+"','"+Quantity+"','"+Integer.parseInt(txtPrice.getText())+"')");
+                System.out.println("Inserted");
+            }
+            
             rs = st.executeQuery("SELECT quantity FROM pharmamed WHERE med_id='"+medicationId+"' AND ph_id='"+pharmacyId+"'");
             int quantity = -1;
             if(rs.next()){
