@@ -672,7 +672,16 @@ public class viewReservation extends javax.swing.JFrame {
             if(rs.next()){
                 medicationId = rs.getInt("med_id");
             }
-            
+            rs = st.executeQuery("SELECT * FROM sales WHERE pharmacy_id='"+pharmacyId+"' AND medication_id='"+medicationId+"'");
+            if(rs.next()){
+                // medication already exist
+                st.executeUpdate("UPDATE sales SET quantity_sold=quantity_sold + '"+quantity_sold+"', price = price + '"+price+"' ");
+                System.out.println("updated");
+            }else{
+                // medication doesn't exist
+                st.executeUpdate("INSERT INTO sales (pharmacy_id, medication_id, quantity_sold, price) VALUES ('"+pharmacyId+"','"+medicationId+"','"+quantity_sold+"','"+price+"')");
+                System.out.println("Inserted");
+            }
             
             rs = st.executeQuery("SELECT quantity FROM pharmamed WHERE med_id='"+medicationId+"' AND ph_id='"+pharmacyId+"'");
             int quantity = -1;
